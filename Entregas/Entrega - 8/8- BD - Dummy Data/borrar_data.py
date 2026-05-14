@@ -48,16 +48,7 @@ def generar_dades_completes():
     # 4 idiomes = 4 pesos (85% espanyol, 5% rus, 5% japonès, 5% xinès)
     pesos = [85, 5, 5, 5]
 
-    print("--- 1. Netejant totes les taules ---")
-    cur.execute("""
-        TRUNCATE PERSONAL_OPERACIO, RESERVA_QUIROFAN, RESERVA_HABITACIO,
-        RECEPTA_VISITA, MEDICAMENT, VISITA, PACIENT, APARELLS_MEDICS,
-        QUIROFANS, HABITACIONS, INFERMERIA, PERSONAL_MEDIC,
-        PERSONAL_VARI, PERSONAL, PLANTES RESTART IDENTITY CASCADE;
-    """)
-
     # 3. Infraestructura
-    print("--- 2. Generant Infraestructura ---")
     plantes_ids = []
     for i in range(1, 6):
         cur.execute("INSERT INTO PLANTES (nom_planta) VALUES (%s) RETURNING id_planta", (f"Planta {i}",))
@@ -75,7 +66,6 @@ def generar_dades_completes():
             quiro_ids.append(cur.fetchone()[0])
 
     # 4. Personal (Superclase/Subclase)
-    print("--- 3. Generant Personal (450 total) ---")
     metges_ids = []
     personal_total_ids = []
 
@@ -106,7 +96,6 @@ def generar_dades_completes():
     crear_personal(150, 'VARI')
 
     # 5. Pacients (50.000)
-    print("--- 4. Generant 50.000 Pacients ---")
     pacients_data = []
     for _ in range(50000):
         f = random.choices(locales, weights=pesos)[0]
@@ -126,7 +115,6 @@ def generar_dades_completes():
     med_ids = [r[0] for r in cur.fetchall()]
 
     # 7. Visites (100.000)
-    print("--- 5. Generant 100.000 Visites ---")
     visites_batch = []
     for _ in range(100000):
         visites_batch.append((
@@ -142,7 +130,6 @@ def generar_dades_completes():
                        VALUES (%s, %s, %s, %s, %s)""", visites_batch)
 
     # 8. Reserves i Operacions
-    print("--- 6. Generant Reserves i Operacions (1.000) ---")
     for _ in range(1000):
         p_id = random.choice(pac_ids)
         cur.execute("INSERT INTO RESERVA_HABITACIO (id_habitacio, id_pacient, data_ingres) VALUES (%s, %s, %s)",
@@ -156,7 +143,7 @@ def generar_dades_completes():
                     (rq_id, random.choice(personal_total_ids)))
 
     conn.commit()
-    print("--- FET: Hospital completat sense errors ---")
+    print("FET")
     cur.close()
     conn.close()
 
