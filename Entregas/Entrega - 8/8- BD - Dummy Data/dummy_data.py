@@ -5,13 +5,12 @@ from faker import Faker
 from dotenv import load_dotenv
 import psycopg2
 
-'''def connect_db(usuari, password):
+def connect_db(usuari, password):
     """Prova de connectar al srvprimary i si no al srvstandby."""
     hosts = ["srvprimary", "srvstandby"]
     conn = None
 
     for host in hosts:
-        print(f"Intentant connexió a {host}...")
         try:
             conn = psycopg2.connect(
                 dbname="Montserrat",
@@ -24,10 +23,7 @@ import psycopg2
             print(f"Connexió establerta amb {host}")
             return conn
         except OperationalError as e:
-            print(f"Error amb {host}: {e}")
-
-    print("No s'ha pogut connectar a cap node.")
-    return None'''
+    return None
 
 def generar_dades_completes():
     load_dotenv()
