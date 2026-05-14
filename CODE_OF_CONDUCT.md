@@ -1,4 +1,4 @@
-# Codi de Conducta de l'App Hospital Montserrat
+# Codi de Conducta
 
 ## 1. El Nostre Compromís
 Com a col·laboradors i mantenidors d'aquest projecte, ens comprometem a fer que la participació sigui una experiència lliure d'assetjament per a tothom, independentment del seu nivell d'experiència, gènere, identitat, orientació sexual, discapacitat o religió.
