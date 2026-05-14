@@ -2,7 +2,7 @@
 
 ![Logo del Proyecto](Hospital-Montserrat_Logo_small.png)
 
-## Descripción
+## Descripció
 Aquest projecte consisteix en un **Sistema Integrat de Gestió Hospitalària** per a l'Hospital Montserrat, dissenyat per centralitzar i optimitzar tota l'operativa administrativa i clínica del centre.
 
 L'aplicació actua com una interfície de control per al personal, connectada a una base de dades robusta que, segons la teva descripció, garanteix l'alta disponibilitat i seguretat mitjançant una arquitectura de servidor principal i replicació a un servidor esclau.
